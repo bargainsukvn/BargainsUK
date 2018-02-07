@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\BargainsUK.DAL\BargainsUK.DAL.csproj" />
+    <ProjectReference Include="..\BargainsUK.Utils\BargainsUK.Utils.csproj" />
+  </ItemGroup>
+
+</Project>
