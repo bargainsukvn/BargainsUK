@@ -8,6 +8,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Autofac" Version="4.6.2" />
+    <PackageReference Include="Autofac.Extensions.DependencyInjection" Version="4.2.0" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.5" />
   </ItemGroup>
 
@@ -17,12 +19,19 @@
 
   <ItemGroup>
     <!-- Files not to publish (note that the 'dist' subfolders are re-added below) -->
+    <Compile Remove="BargainsUK.IntegrationTest\**" />
+    <Compile Remove="BargainsUK.Utils.UnitTest\**" />
+    <Content Remove="BargainsUK.IntegrationTest\**" />
+    <Content Remove="BargainsUK.Utils.UnitTest\**" />
     <Content Remove="ClientApp\**" />
+    <EmbeddedResource Remove="BargainsUK.IntegrationTest\**" />
+    <EmbeddedResource Remove="BargainsUK.Utils.UnitTest\**" />
+    <None Remove="BargainsUK.IntegrationTest\**" />
+    <None Remove="BargainsUK.Utils.UnitTest\**" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\BargainsUK.Business\BargainsUK.Business.csproj" />
-    <ProjectReference Include="..\BargainsUK.DAL\BargainsUK.DAL.csproj" />
     <ProjectReference Include="..\BargainsUK.Utils\BargainsUK.Utils.csproj" />
   </ItemGroup>
 

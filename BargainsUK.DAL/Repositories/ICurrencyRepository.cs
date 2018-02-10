@@ -10,6 +10,8 @@ namespace BargainsUK.DAL.Repositories
     {
         IList<Currency> GetAll();
         Task<IList<Currency>> GetAllAsync();
+
+        Currency GetBy(string id);
         Task<Currency> GetByAsync(string id);
     }
 }

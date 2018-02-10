@@ -9,28 +9,29 @@ using System.Threading.Tasks;
 
 namespace BargainsUK.DAL.Repositories
 {
-    public class CurrencyRepository : ICurrencyRepository
+    public class CurrencyRepository : BaseRepository, ICurrencyRepository
     {
-        private readonly Context _context = null;
-
-        public CurrencyRepository(IOptions<Settings> settings)
+        public CurrencyRepository(IContext context) : base(context)
         {
-            _context = new Context(settings);
         }
 
-        public IList<Currency> GetAll()
+        IList<Currency> ICurrencyRepository.GetAll()
         {
-            
-
             return _context.Currencies.Find(_ => true).ToList();
         }
 
-        public async Task<IList<Currency>> GetAllAsync()
+        async Task<IList<Currency>> ICurrencyRepository.GetAllAsync()
         {
             return await _context.Currencies.Find(_ => true).ToListAsync(); ;
         }
 
-        public async Task<Currency> GetByAsync(string id)
+        Currency ICurrencyRepository.GetBy(string id)
+        {
+            var filter = Builders<Currency>.Filter.Eq("Id", id);
+            return _context.Currencies.Find(filter).FirstOrDefault();
+        }
+
+        async Task<Currency> ICurrencyRepository.GetByAsync(string id)
         {
             var filter = Builders<Currency>.Filter.Eq("Id", id);
             return await _context.Currencies.Find(filter).FirstOrDefaultAsync();

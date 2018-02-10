@@ -1,33 +1,38 @@
 ﻿using BargainsUK.DAL.Models;
 using BargainsUK.Utils;
 using Microsoft.Extensions.Options;
-using MongoDB.Bson;
 using MongoDB.Driver;
+using System;
 
 namespace BargainsUK.DAL
 {
-    public class Context
+    public class Context : IContext
     {
-        private readonly IMongoDatabase _database = null;
+        private readonly IOptions<Settings> _settings;
 
         public Context(IOptions<Settings> settings)
         {
-            var client = new MongoClient(settings.Value.ConnectionString);
-            if (client != null)
-                _database = client.GetDatabase(settings.Value.Database);
+            if (settings == null)
+                throw new ArgumentException("Invalid settings", nameof(settings));
 
-            // TEST
-            //var collection = _database.GetCollection<BsonDocument>("bullshit");
+            if (settings.Value == null || string.IsNullOrEmpty(settings.Value.ConnectionString))
+                throw new ArgumentException("Invalid settings", nameof(settings.Value));
 
-            var test = 1;
+            _settings = settings;
+
+            //_client = new MongoClient(settings.Value.ConnectionString);
+            //if (client == null)
+            //    throw new InvalidOperationException($"Invalid connection: {settings.Value.ConnectionString}");
         }
 
-        public IMongoCollection<Currency> Currencies
-        {
-            get
-            {
-                return _database.GetCollection<Currency>("currency");
-            }
-        }
+        private IMongoClient _client = null;
+        internal IMongoClient Client => _client ?? (_client = new MongoClient(_settings.Value.ConnectionString));
+
+        private IMongoDatabase _database = null;
+        private IMongoDatabase Database => _database ?? (_database = Client.GetDatabase(_settings.Value.Database));
+
+        public virtual IMongoCollection<Currency> Currencies => Database.GetCollection<Currency>("currency");
+
+        public virtual IMongoCollection<Culture> Cultures => Database.GetCollection<Culture>("culture");
     }
 }

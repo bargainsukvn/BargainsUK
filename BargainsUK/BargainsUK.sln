@@ -5,11 +5,22 @@ VisualStudioVersion = 15.0.27130.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BargainsUK", "BargainsUK.csproj", "{6416FC63-E6B6-409F-9806-4856728C699F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BargainsUK.DAL", "..\BargainsUK.DAL\BargainsUK.DAL.csproj", "{487B9757-550B-4DA3-8DF4-62D487F892FC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BargainsUK.DAL", "..\BargainsUK.DAL\BargainsUK.DAL.csproj", "{487B9757-550B-4DA3-8DF4-62D487F892FC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BargainsUK.Business", "..\BargainsUK.Business\BargainsUK.Business.csproj", "{DEE0AC6F-0EBB-4E2F-9048-09B5D6AED012}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BargainsUK.Business", "..\BargainsUK.Business\BargainsUK.Business.csproj", "{DEE0AC6F-0EBB-4E2F-9048-09B5D6AED012}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BargainsUK.Utils", "..\BargainsUK.Utils\BargainsUK.Utils.csproj", "{E941FAB0-C8FC-4AC8-BFE8-A1591366BBAA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BargainsUK.Utils", "..\BargainsUK.Utils\BargainsUK.Utils.csproj", "{E941FAB0-C8FC-4AC8-BFE8-A1591366BBAA}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BargainsUK.UnitTest", "..\BargainsUK.UnitTest\BargainsUK.UnitTest.csproj", "{A0AACD88-23B6-4E31-8E10-B77C3F38FC02}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DEE0AC6F-0EBB-4E2F-9048-09B5D6AED012} = {DEE0AC6F-0EBB-4E2F-9048-09B5D6AED012}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BargainsUK.IntegrationTest", "..\BargainsUK.IntegrationTest\BargainsUK.IntegrationTest.csproj", "{5E3DC078-E8E4-44CD-9C49-3631410128E1}"
+	ProjectSection(ProjectDependencies) = postProject
+		{DEE0AC6F-0EBB-4E2F-9048-09B5D6AED012} = {DEE0AC6F-0EBB-4E2F-9048-09B5D6AED012}
+		{E941FAB0-C8FC-4AC8-BFE8-A1591366BBAA} = {E941FAB0-C8FC-4AC8-BFE8-A1591366BBAA}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +44,14 @@ Global
 		{E941FAB0-C8FC-4AC8-BFE8-A1591366BBAA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E941FAB0-C8FC-4AC8-BFE8-A1591366BBAA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E941FAB0-C8FC-4AC8-BFE8-A1591366BBAA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A0AACD88-23B6-4E31-8E10-B77C3F38FC02}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A0AACD88-23B6-4E31-8E10-B77C3F38FC02}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A0AACD88-23B6-4E31-8E10-B77C3F38FC02}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A0AACD88-23B6-4E31-8E10-B77C3F38FC02}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5E3DC078-E8E4-44CD-9C49-3631410128E1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5E3DC078-E8E4-44CD-9C49-3631410128E1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5E3DC078-E8E4-44CD-9C49-3631410128E1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5E3DC078-E8E4-44CD-9C49-3631410128E1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
