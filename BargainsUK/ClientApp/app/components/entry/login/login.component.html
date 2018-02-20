@@ -1,0 +1,19 @@
+<h1>Log-in</h1>
+
+<p>Please enter login details below:</p>
+
+<label for="password">Username</label>
+<div class="form-group row">
+    <div class="col-xs-4">
+        <input name="username" ng-model="username" class="form-control" placeholder="Enter Username" required>
+    </div>
+</div>
+
+<label for="password">Password</label>
+<div class="form-group row">
+    <div class="col-xs-4">
+        <input type="password" class="form-control" id="password" placeholder="Enter Password">
+    </div>
+</div>
+
+<button (click)="login()" type="button" class="btn btn-success">Log in</button>
